@@ -10,6 +10,8 @@ function getGameNumber() {
 	//因为随机生成的4个数字可能是没有解的，所以要一直找到一个有解的数字组合
 	while (true) {
 		var gameNumber = generateNumber();
+		if (cal24)
+			cal24.clear();
 		cal24 = new Cal24(gameNumber);
 		if (cal24.getTracks().length !== 0) {
 			console.log("游戏数字是:" + gameNumber)
@@ -44,7 +46,6 @@ r.commands['answer'] = {
 	action: function () {
 		console.log("有这些算法:");
 		console.log(cal24.getTracks());
-		cal24.clear();
 	}
 };
 
