@@ -12,11 +12,7 @@ function getGameNumber() {
 		var gameNumber = generateNumber();
 		if (cal24)
 			cal24.clear();
-		cal24 = new Cal24(gameNumber);
-		if (cal24.getTracks().length !== 0) {
-			console.log("游戏数字是:" + gameNumber)
-			break;
-		}
+		return gameNumber;
 	}
 }
 
@@ -37,7 +33,11 @@ function generateNumber() {
 r.commands['new'] = {
 	help: "新游戏",
 	action: function () {
-		getGameNumber();
+		var gameNumber = getGameNumber();
+		cal24 = new Cal24(gameNumber);
+		if (cal24.getTracks().length !== 0) {
+			console.log("游戏数字是:" + gameNumber)
+		}
 	}
 };
 
@@ -52,20 +52,21 @@ r.commands['answer'] = {
 r.commands['cal'] = {
 	help: "输入4个数字，列出计算24的所有算法",
 	action: function () {
-		console.log(arguments);
 		var numberArray = arguments['0'].split(',');
-		if (numberArray.length !== 4) {
-			throw new Error('必须输入4个数字参数');
-		}
 
 		numberArray = numberArray.map(function (e) {
 			var number = parseInt(e);
 			if (isNaN(number))
-				throw new Error('必须输入数字');
+				return;
 			return number;
 		})
 
-		var cal24 = new Cal24(numberArray);
+		if (numberArray.length !== 4) {
+			return console.log('必须输入四个数字');
+		}
+		if (cal24)
+			cal24.clear();
+		cal24 = new Cal24(numberArray);
 		console.log("有这些算法:");
 		console.log(cal24.getTracks());
 	}
