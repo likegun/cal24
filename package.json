@@ -1,0 +1,18 @@
+{
+  "name": "cal24",
+  "version": "1.0.0",
+  "description": "算24小游戏",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["game", "算24"],
+  "author": "王如锵",
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "^3.10.1"
+  }
+}
