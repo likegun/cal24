@@ -9,10 +9,16 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["game", "算24"],
+  "keywords": [
+    "game",
+    "算24"
+  ],
   "author": "王如锵",
   "license": "MIT",
   "dependencies": {
-    "lodash": "^3.10.1"
+    "babel-preset-es2015": "^6.3.13",
+    "babel-register": "^6.3.13",
+    "lodash": "^3.10.1",
+    "math-permutation": "^1.0.0"
   }
 }
